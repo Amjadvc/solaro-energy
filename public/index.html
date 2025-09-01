@@ -2,38 +2,403 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jamstack Explorers - Up and Running with Serverless Functions</title>
+    <title>Home Solar | Green Energy Savings</title>
+    <link rel="icon" href="./assets/images/favicon.ico" sizes="32x32" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <!-- font  -->
+    <link
+      href="https://db.onlinewebfonts.com/c/5f3fcb0f6d0ea94f5b824c0dec2913df?family=BlitzCondensed+W03+XboldItalic"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
-    <h1>Up and Running with Serverless Functions</h1>
-    <button id="fetch-btn">Fetch</button>
-    <button id="fetch-pokedex-btn">Fetch Pokedex</button>
-    <p id="response-output">Response Placeholder</p>
+    <div class="bg-container">
+      <header>
+        <div class="container">
+          <div class="header-logo-container">
+            <div class="logo-img-container">
+              <img src="./assets/svgs/logo-e.svg" alt="" />
+            </div>
+            <h2 class="logo-text">greenenergysavings</h2>
+          </div>
+        </div>
+      </header>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const fetchBtn = document.getElementById("fetch-btn");
-        const responseText = document.getElementById("response-output");
-        const fetchPokedexBtn = document.getElementById("fetch-pokedex-btn");
+      <section class="hero">
+        <div class="container">
+          <div class="hero-text">
+            <div class="hero-text-header">
+              <p><span>Don't Overpay</span> for Solar</p>
+            </div>
+            <div class="hero-text-content">
+              <p>Green Energy Savings shoppers save $5K or more</p>
+            </div>
+          </div>
+          <!-- -->
+          <form
+            id="formOne"
+            action="survey.html"
+            method="get"
+            class="hero-form-container"
+          >
+            <div class="inpt-container">
+              <div class="inp-holder">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="text-gray-800"
+                  style="height: 24px; width: 24px"
+                  data-v-5d7114c0=""
+                >
+                  <path
+                    d="M5.636 3.636A9 9 0 0 1 21 10c0 1.017-.108 1.912-.389 2.76-.283.853-.724 1.608-1.33 2.365a.985.985 0 0 1-.025.03l-6.5 7.5a1 1 0 0 1-1.512 0l-6.5-7.5a1.017 1.017 0 0 1-.024-.03c-.607-.757-1.048-1.512-1.331-2.365C3.108 11.912 3 11.017 3 10a9 9 0 0 1 2.636-6.364Z"
+                    fill="none"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 8a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-4 2a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M5.636 3.636A9 9 0 0 1 21 10c0 1.017-.108 1.912-.389 2.76-.283.853-.724 1.608-1.33 2.365a.985.985 0 0 1-.025.03l-6.5 7.5a1 1 0 0 1-1.512 0l-6.5-7.5a1.017 1.017 0 0 1-.024-.03c-.607-.757-1.048-1.512-1.331-2.365C3.108 11.912 3 11.017 3 10a9 9 0 0 1 2.636-6.364ZM12 3a7 7 0 0 0-7 7c0 .875.093 1.545.287 2.131.192.577.497 1.122.982 1.729L12 20.473l5.731-6.613c.485-.607.79-1.152.981-1.729.195-.586.288-1.256.288-2.131a7 7 0 0 0-7-7Z"
+                  ></path>
+                </svg>
+                <input
+                  id="zipOne"
+                  name="zip"
+                  type="text"
+                  placeholder="ZIP code"
+                  maxlength="5"
+                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="invalid-inp-icon"
+                >
+                  <path
+                    fill="transparent"
+                    d="M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11"
+                  />
+                  <path
+                    fill="#de3c50"
+                    d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12"
+                  />
+                  <path
+                    fill="#de3c50"
+                    d="M12 6a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V7a1 1 0 0 1 1-1m0 9.5a1 1 0 0 1 1 1v.5a1 1 0 1 1-2 0v-.5a1 1 0 0 1 1-1"
+                  />
+                </svg>
+              </div>
+              <div class="invalid-message-holder">
+                <p class="invalid-message">
+                  Please enter a five-digit zip code.
+                </p>
+              </div>
+            </div>
+            <button data-next type="submit">CHECK PRICES</button>
+          </form>
+        </div>
+      </section>
 
-        fetchPokedexBtn.addEventListener("click", async () => {
-          const response = await fetch("/.netlify/functions/pokedex").then(
-            (response) => response.json()
-          );
+      <section class="save-up">
+        <div class="sava-message">
+          <div class="sava-message-container">
+            <div class="sava-message-inner">
+              <img
+                src="./assets/svgs/savings-bubble.svg"
+                alt="savings bubble"
+              />
+              <p>
+                Save up to <strong>22%</strong> <br />
+                with Green Energy Savings!
+              </p>
+            </div>
+          </div>
 
-          responseText.innerText = JSON.stringify(response);
-        });
+          <div class="save-up-bg-container">
+            <picture>
+              <!-- Image for small devices -->
+              <source
+                srcset="./assets/svgs/mobile-save-up.svg"
+                media="(max-width: 768px)"
+              />
+              <!-- Image for large devices -->
+              <source
+                srcset="./assets/svgs/desktop-save-up.svg"
+                media="(max-width: 1024px)"
+              />
+              <img
+                src="./assets/svgs/desktop-save-up.svg"
+                alt=" save up illustration "
+              />
+            </picture>
+          </div>
+        </div>
+      </section>
+    </div>
 
-        fetchBtn.addEventListener("click", async () => {
-          const response = await fetch("/.netlify/functions/hello-world").then(
-            (response) => response.json()
-          );
+    <section class="steps">
+      <div class="container">
+        <div class="sec-header">
+          <h2>Shop for solar in 3 easy steps — no pushy sales calls.</h2>
+        </div>
+        <div class="sec-conent">
+          <div class="sec-conent-card">
+            <img
+              src="./assets/svgs/step_01.svg"
+              alt="step one imge"
+              loading="lazy"
+            />
+            <p>Complete our short form</p>
+          </div>
 
-          responseText.innerText = JSON.stringify(response);
-        });
-      });
-    </script>
+          <div class="sec-conent-card">
+            <img
+              src="./assets/svgs/step_02.svg"
+              alt="step two imge"
+              loading="lazy"
+            />
+            <p>Get matched with top-rated installers</p>
+          </div>
+
+          <div class="sec-conent-card">
+            <img
+              src="./assets/svgs/step_03.svg"
+              alt="step three imge"
+              loading="lazy"
+            />
+            <p>Compare and choose the right installer for you</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="outlets">
+      <div class="container">
+        <div class="sec-header">
+          <h2>As seen in top news outlets</h2>
+        </div>
+        <div class="outlets-imges-container">
+          <div class="outlets-one">
+            <img
+              src="./assets/svgs/e1-t.svg"
+              alt="Trusted Site"
+              loading="lazy"
+            />
+          </div>
+          <div class="outlets-two">
+            <img
+              src="./assets/images/e2-eq.png"
+              alt="Equal housing opportunity"
+              loading="lazy"
+            />
+          </div>
+          <div class="outlets-three">
+            <img
+              src="./assets/images/e3-nor.png"
+              alt="Norton secured"
+              loading="lazy"
+            />
+          </div>
+          <div class="outlets-four">
+            <img
+              src="./assets/svgs/e4-tf.svg"
+              alt="Trusted form"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="choose-EnergySage">
+      <div class="container">
+        <div class="sec-header">
+          <h2>Why choose Green Energy Savings</h2>
+        </div>
+        <div class="choose-conent">
+          <div class="choose-conent-card">
+            <img
+              src="./assets/svgs/time-money-icon.svg"
+              alt="time money"
+              loading="lazy"
+            />
+            <p>Save time & money</p>
+            <p>Request free quotes from vetted installers in minutes.</p>
+          </div>
+          <div class="choose-conent-card">
+            <img
+              src="./assets/svgs/unbiased-icon.svg"
+              alt="unbiased"
+              loading="lazy"
+            />
+            <p>Unbiased support</p>
+            <p>
+              Our expert Energy Advisors will help you make the right decision.
+            </p>
+          </div>
+          <div class="choose-conent-card">
+            <img
+              src="./assets/svgs/trust-icon.svg"
+              alt="time money"
+              loading="lazy"
+            />
+            <p>Trusted, local installers</p>
+            <p>We pre-screen and monitor all of our partners.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-sec-one">
+        <div class="container">
+          <div>
+            <p>
+              Make an impact.
+              <br />
+              It's never been easier.
+            </p>
+          </div>
+          <div>
+            We developed our one-of-a-kind marketplace with funding from the
+            U.S. Department of Energy to make clean home energy solutions
+            affordable and accessible to all.
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-sec-three">
+        <div class="container">
+          <div class="sec-three-en">
+            <p>
+              Green Energy Savings is a registered trademark and the Green
+              Energy Savings logo is a trademark of Green Energy Savings, Inc.
+              Other trademarks are the property of either Green Energy Savings,
+              Inc. or our licensors and are used with permission.
+            </p>
+            <p>
+              © Copyright 2009-2024 Green Energy Savings, Inc. All rights
+              reserved.
+            </p>
+          </div>
+          <hr />
+          <div class="footer-sec-three-links">
+            <div>
+              <a
+                href="https://green-energy-savings.com/terms-of-use/"
+                target="_self"
+              >
+                Terms of use
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://green-energy-savings.com/terms-of-use/"
+                target="_self"
+              >
+                Privacy policy
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="fixed-form fixed-form-hidden">
+      <picture>
+        <img srcset="./assets/svgs/form-bg-st.svg" alt="background"
+      /></picture>
+      <div class="container">
+        <div class="container-inner">
+          <div class="fixed-form-text-container">
+            <h2>
+              <span style="color: #152f87"
+                >Save up to 22% with Green Energy Savings</span
+              >
+            </h2>
+          </div>
+
+          <div>
+            <form
+              id="formTwo"
+              action="survey.html"
+              method="get"
+              class="hero-form-container"
+            >
+              <div class="inpt-container">
+                <div class="inp-holder">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="text-gray-800"
+                    style="height: 24px; width: 24px"
+                    data-v-5d7114c0=""
+                  >
+                    <path
+                      d="M5.636 3.636A9 9 0 0 1 21 10c0 1.017-.108 1.912-.389 2.76-.283.853-.724 1.608-1.33 2.365a.985.985 0 0 1-.025.03l-6.5 7.5a1 1 0 0 1-1.512 0l-6.5-7.5a1.017 1.017 0 0 1-.024-.03c-.607-.757-1.048-1.512-1.331-2.365C3.108 11.912 3 11.017 3 10a9 9 0 0 1 2.636-6.364Z"
+                      fill="none"
+                    ></path>
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M12 8a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-4 2a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z"
+                    ></path>
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M5.636 3.636A9 9 0 0 1 21 10c0 1.017-.108 1.912-.389 2.76-.283.853-.724 1.608-1.33 2.365a.985.985 0 0 1-.025.03l-6.5 7.5a1 1 0 0 1-1.512 0l-6.5-7.5a1.017 1.017 0 0 1-.024-.03c-.607-.757-1.048-1.512-1.331-2.365C3.108 11.912 3 11.017 3 10a9 9 0 0 1 2.636-6.364ZM12 3a7 7 0 0 0-7 7c0 .875.093 1.545.287 2.131.192.577.497 1.122.982 1.729L12 20.473l5.731-6.613c.485-.607.79-1.152.981-1.729.195-.586.288-1.256.288-2.131a7 7 0 0 0-7-7Z"
+                    ></path>
+                  </svg>
+                  <input
+                    id="zipTwo"
+                    name="zip"
+                    type="text"
+                    placeholder="ZIP code"
+                    maxlength="5"
+                  />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    class="invalid-inp-icon"
+                  >
+                    <path
+                      fill="transparent"
+                      d="M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11"
+                    />
+                    <path
+                      fill="#de3c50"
+                      d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12"
+                    />
+                    <path
+                      fill="#de3c50"
+                      d="M12 6a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V7a1 1 0 0 1 1-1m0 9.5a1 1 0 0 1 1 1v.5a1 1 0 1 1-2 0v-.5a1 1 0 0 1 1-1"
+                    />
+                  </svg>
+                </div>
+                <div class="invalid-message-holder">
+                  <p class="invalid-message">
+                    Please enter a five-digit zip code.
+                  </p>
+                </div>
+              </div>
+              <button data-next type="submit">CHECK PRICES</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/main.js"></script>
   </body>
 </html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>survey</title>
+    <link rel="icon" href="./assets/images/favicon.ico" sizes="32x32" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/survey.css" />
+
+    <script>
+      async function loadGoogleMaps() {
+        try {
+          const res = await fetch("/.netlify/functions/maps");
+          const { encodedKey } = await res.json();
+
+          const script = document.createElement("script");
+          script.src = `https://maps.googleapis.com/maps/api/js?key=${atob(
+            encodedKey
+          )}&libraries=places,marker&callback=initMap`;
+          script.async = true;
+          document.head.appendChild(script);
+        } catch (err) {
+          console.error("Error loading Google Maps:", err);
+        }
+      }
+
+      loadGoogleMaps();
+    </script>
+  </head>
+  <body>
+    <div id="pre_load" class="show-preload">
+      <div class="sk-cube-grid">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
+      </div>
+    </div>
+
+    <header class="survey-header">
+      <div class="container survey">
+        <div class="header-logo-container">
+          <div class="logo-img-container">
+            <img src="./assets/svgs/logo-e.svg" alt="" />
+          </div>
+          <h2 class="logo-text">greenenergysavings</h2>
+        </div>
+      </div>
+      <button type="button " id="backButton" class="hidden">
+        <img src="./assets/svgs/arrow-right.svg" alt="arrow" loading="lazy" />
+      </button>
+    </header>
+    <section class="progress">
+      <div class="progress-outer">
+        <div id="progressBar" class="progress-inner"></div>
+      </div>
+      <div class="progress-trak">
+        <p>
+          <strong data-progress-current>1</strong>/
+          <strong data-progress-total>10</strong>
+        </p>
+      </div>
+    </section>
+
+    <form id="form">
+      <div class="container">
+        <div id="step1" data-step class="">
+          <h2 class="step-header">
+            What type of property do you want quotes for?
+          </h2>
+          <div class="radiosConainer">
+            <!-- property_type  -->
+            <label data-check="9"
+              ><input type="radio" name="property_type" value="residential" />
+              <span>Home</span>
+            </label>
+            <label data-check="10"
+              ><input type="radio" name="property_type" value="commercial" />
+              <span>Business</span>
+            </label>
+            <label class="label-none" data-check="10"
+              ><input type="radio" name="property_type" value="nonprofit" />
+              <span>Nonprofit</span>
+            </label>
+          </div>
+
+          <div class="btn-step-conatiner">
+            <button type="button" data-next disabled>
+              <span>Next</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="step2" data-step class="hidden">
+          <h2 class="step-header">Do you own or lease this property?</h2>
+          <div class="radiosConainer">
+            <label
+              ><input type="radio" name="own_or_lease" value="owner" />
+              <span>I own</span>
+            </label>
+            <label
+              ><input
+                type="radio"
+                name="own_or_lease"
+                value="represent_owner"
+              />
+              <span>I don't own, but I represent the owner</span>
+            </label>
+            <label
+              ><input
+                type="radio"
+                name="own_or_lease"
+                value="commercial_lessee"
+              />
+              <span>I lease</span>
+            </label>
+          </div>
+
+          <div class="btn-step-conatiner">
+            <button type="button" data-next disabled>
+              <span>Next</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="step3" data-step class="hidden">
+          <h2 class="step-header">
+            When do you plan to purchase a solar system?
+          </h2>
+          <div class="radiosConainer">
+            <label
+              ><input
+                type="radio"
+                name="purchase_solar_system"
+                value="next_few_months"
+              />
+              <span>Within the next few months</span>
+            </label>
+            <label
+              ><input
+                type="radio"
+                name="purchase_solar_system"
+                value="next_year"
+              />
+              <span>Within the next year</span>
+            </label>
+            <label
+              ><input
+                type="radio"
+                name="purchase_solar_system"
+                value="unsure"
+              />
+              <span>I'm not sure</span>
+            </label>
+          </div>
+
+          <div class="btn-step-conatiner">
+            <button type="button" data-next disabled>
+              <span>Next</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="step4" data-b class="hidden">
+          <h2 class="step-header">
+            How much is your average monthly electric bill?
+          </h2>
+          <p class="step-paragraph">
+            It's OK if you don't know - we've set a default below based on
+            average electricity costs in your area.
+          </p>
+          <div class="input-outer">
+            <label for="electricityBillRef">
+              Cost per month <span class="label-danger">*</span>
+            </label>
+            <div class="input-inner">
+              <span class="prefix-icon"> $ </span>
+              <input
+                id="electricityBillRef"
+                type="number"
+                name="electric_bill_nonprofit"
+                placeholder="250"
+                value="250"
+              />
+            </div>
+          </div>
+
+          <div class="btn-step-conatiner">
+            <button type="button" data-next class="active">
+              <span>Next</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="step5" class="hidden">
+          <h2 class="step-header">What is your business address?</h2>
+          <div class="input-outer">
+            <label for="address"> Address </label>
+            <div class="inp-holder">
+              <input id="address" type="text" name="address" />
+            </div>
+            <div class="cretedby">
+              <p>Powered by <strong>Google </strong></p>
+            </div>
+          </div>
+
+          <div class="btn-step-conatiner">
+            <button type="button" data-next data-address disabled>
+              <span>Next</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="step6" class="hidden">
+          <h2 class="step-header">What is the name of your organization?</h2>
+
+          <div class="input-outer">
+            <label for="organizationNameRef">
+              Company name<span class="label-danger">*</span>
+            </label>
+            <div class="input-inner">
+              <input
+                id="organizationNameRef"
+                type="text"
+                name="organization_name"
+              />
+            </div>
+          </div>
+
+          <div class="btn-step-conatiner">
+            <button type="button" data-next disabled>
+              <span>Next</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="step7" class="hidden">
+          <h2 class="step-header">Almost done! What's your name?</h2>
+
+          <div class="input-outer">
+            <label for="firstName">
+              First Name<span class="label-danger">*</span>
+            </label>
+            <div class="inp-holder">
+              <input id="firstName" type="text" name="first-name" />
+            </div>
+          </div>
+
+          <div class="input-outer">
+            <label for="lastName">
+              Last Name<span class="label-danger">*</span>
+            </label>
+            <div class="inp-holder">
+              <input id="lastName" type="text" name="last-name" />
+            </div>
+          </div>
+
+          <div class="btn-step-conatiner">
+            <button type="button" data-next disabled>
+              <span>Next</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="step8" data-step class="hidden">
+          <h2 class="step-header">Do you own or rent this home?</h2>
+          <div class="radiosConainer">
+            <label data-check="8"
+              ><input type="radio" name="own_or_rent_home" value="own" />
+              <span>I own</span>
+            </label>
+            <label data-check="9"
+              ><input type="radio" name="own_or_rent_home" value="rent" />
+              <span>I rent</span>
+            </label>
+          </div>
+
+          <div class="btn-step-conatiner">
+            <button type="button" data-next disabled>
+              <span>Next</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="step9" data-r class="hidden">
+          <h2 class="step-header">
+            How much is your average monthly electric bill?
+          </h2>
+          <p class="step-paragraph">
+            It's OK if you don't know - we've set a default below based on
+            average electricity costs in your area.
+          </p>
+
+          <div class="progreess">
+            <div class="progreess-input-holder">
+              <div class="range-slider">
+                <input
+                  type="range"
+                  name="electric_bill_home"
+                  value="650"
+                  min="50"
+                  max="1200"
+                  step="10"
+                  class="slider"
+                />
+                <!-- value="150" -->
+                <div class="slider-thump">
+                  <div class="tooltip"></div>
+                </div>
+                <div class="progress"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-step-conatiner">
+            <button type="button" data-next class="active">
+              <span>Next</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="step10" data-step data-r class="hidden">
+          <h2 class="step-header">
+            Do you meet any of the following criteria?
+          </h2>
+          <div class="radiosConainer">
+            <label data-check="9"
+              ><input
+                type="radio"
+                name="following_criteria"
+                value="someone_else"
+              />
+              <span>
+                I'm shopping for someone else (family member, landlord)
+              </span>
+            </label>
+            <label data-check="9"
+              ><input
+                type="radio"
+                name="following_criteria"
+                value="hoa_or_multi"
+              />
+              <span>I'm shopping for an HOA or a multi unit condo</span>
+            </label>
+            <label data-check="8"
+              ><input type="radio" name="following_criteria" value="none" />
+              <span>None of these</span>
+            </label>
+          </div>
+
+          <div class="btn-step-conatiner">
+            <button type="button" data-next disabled>
+              <span>Next</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="step15" class="hidden">
+          <h2 class="step-header">Confirm your property.</h2>
+
+          <p class="step-paragraph">
+            If the pin is not on your property, click your roof to place it.
+          </p>
+          <div class="mapContainer">
+            <div id="map"></div>
+            <div class="address-show">
+              <p>Address</p>
+              <p id="addressShow">Israel Head Road, Ogunquit, ME, USA</p>
+            </div>
+          </div>
+          <div class="btn-step-conatiner">
+            <button type="button" data-next class="active">
+              <span>Next</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="step16" class="hidden">
+          <h2 class="step-header">And what's your email address?</h2>
+
+          <p class="step-paragraph">
+            We will never share your email with installers without your
+            permission.
+          </p>
+
+          <div class="input-outer">
+            <label for="email">
+              Email<span class="label-danger">*</span>
+            </label>
+            <div class="inp-holder">
+              <input id="email" type="text" name="email" />
+            </div>
+            <div class="emailpv">
+              <p>
+                Your information is safe with us.
+                <a href="/"> Privacy Policy.</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="btn-step-conatiner">
+            <button type="button" data-next disabled>
+              <span>Next</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="step17" class="hidden">
+          <h2 class="step-header">
+            What is the best phone number to reach you?
+          </h2>
+
+          <p class="step-paragraph">
+            A brief phone call can often better help installers tailor to you.
+            EnergySage won't share your phone number unless you grant us
+            permission.
+          </p>
+
+          <div class="input-outer">
+            <label for="phone">
+              Phone Number<span class="label-danger">*</span>
+            </label>
+            <div class="inp-holder">
+              <input
+                id="phone"
+                type="text"
+                name="phone_number"
+                placeholder="(000) 000-0000"
+              />
+            </div>
+            <div class="emailpv">
+              <p>
+                By selecting “Submit” you are agreeing to EnergySage's
+                <a href="/">Terms of Use</a>
+                and <a href="/"> Privacy Policy.</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="btn-step-conatiner">
+            <button type="submit" data-submit disabled>
+              <div class="loader"></div>
+              <span>Submit</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414L17.586 13H4a1 1 0 1 1 0-2h13.586l-5.293-5.293a1 1 0 0 1 0-1.414Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <script src="./js/survey.js"></script>
+  </body>
+</html>

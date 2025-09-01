@@ -1,0 +1,128 @@
+.header-thanks {
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .header-thanks {
+    margin-top: 30px;
+  }
+}
+
+.header-thanks .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.header-thanks h1 {
+  font-size: 40px;
+  letter-spacing: 1px;
+  padding-bottom: 25px;
+  color: var(--fourth-color);
+}
+
+@media (max-width: 768px) {
+  .header-thanks h1 {
+    font-size: 33px;
+    padding-bottom: 13px;
+  }
+}
+
+.header-thanks h2 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #4d4b7b;
+}
+@media (max-width: 768px) {
+  .header-thanks h2 {
+    font-size: 25px;
+  }
+}
+
+.steps-thanks {
+  padding-top: 100px;
+  padding-bottom: 20px;
+}
+
+.steps-thanks .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 44px;
+}
+
+@media (max-width: 992px) {
+  .steps-thanks .container {
+    flex-direction: column;
+    gap: 100px;
+  }
+}
+
+.th-step {
+  position: relative;
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--second-color);
+  background: var(--fifth-color);
+  border-radius: 15px;
+  padding: 74px 10px 20px;
+  min-height: 280px;
+  height: 100%;
+  box-shadow: 0px 6px 13px -10px var(--main-color), 0px 7px 8px -2px #ff9d51;
+}
+
+.th-step:nth-child(2) {
+  background: var(--second-color);
+  transform: translateY(-10px) scale(1.01);
+}
+
+@media (max-width: 992px) {
+  .th-step:nth-child(2) {
+    transform: translateY(0px) scale(1.01);
+  }
+}
+
+.th-step:nth-child(2) h4 {
+  color: var(--fifth-color);
+}
+.th-step:nth-child(2) p {
+  color: var(--fifth-color);
+}
+.th-step:nth-child(2) a {
+  color: var(--fifth-color);
+  font-weight: 700;
+}
+.step-img {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 120px;
+}
+.step-img img {
+  width: 100%;
+}
+
+.th-step h4 {
+  font-size: 23px;
+  color: var(--fourth-color);
+}
+.th-step p {
+  padding: 15px 3px 0;
+  font-size: 16px;
+  color: #161616;
+  text-align: center;
+  line-height: 23px;
+}
+
+.th-step a {
+  text-decoration: none;
+  color: var(--fourth-color);
+}
+.th-step a:hover {
+  text-decoration: underline;
+}
